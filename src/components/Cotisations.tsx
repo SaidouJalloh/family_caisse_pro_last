@@ -18,9 +18,9 @@ import {
     BarChart3,
     PieChart
 } from 'lucide-react';
-import { DatabaseService } from '../services/database';
-import { DbMember, DbCotisation, DbPayment } from '../lib/supabase';
-
+// import { DatabaseService } from '../lib/database';
+// import { DbMember, DbCotisation, DbPayment } from '../lib/database';
+import { DatabaseService, authService, DbMember, DbPayment, DbCotisation } from '../lib/supabaseService'
 interface CotisationsProps {
     onBack: () => void;
 }

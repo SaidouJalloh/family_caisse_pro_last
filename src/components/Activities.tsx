@@ -24,9 +24,9 @@ import {
     Target,
     BarChart3
 } from 'lucide-react'
-import { DatabaseService } from '../services/database'
-import { DbActivity, DbMember, DbPayment } from '../lib/supabase'
-
+// import { DatabaseService } from '../lib/database'
+// import { DbActivity, DbMember, DbPayment } from '../lib/database'
+import { DatabaseService, DbActivity, DbMember, DbPayment } from '../lib/supabaseService'
 interface ActivitiesProps {
     onBack: () => void
 }
@@ -644,8 +644,8 @@ const Activities: React.FC<ActivitiesProps> = ({ onBack }) => {
                                         <div className="flex items-center justify-between">
                                             <span className="text-orange-700 font-medium">Nouveau solde de caisse:</span>
                                             <span className={`text-xl font-bold ${(totalCaisse - parseFloat(newActivity.amount || '0')) >= 0
-                                                    ? 'text-green-600'
-                                                    : 'text-red-600'
+                                                ? 'text-green-600'
+                                                : 'text-red-600'
                                                 }`}>
                                                 {(totalCaisse - parseFloat(newActivity.amount || '0')).toFixed(2)}€
                                             </span>

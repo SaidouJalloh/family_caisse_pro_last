@@ -734,9 +734,9 @@ import {
     Target,
     DollarSign
 } from 'lucide-react'
-import { DatabaseService } from '../services/database'
-import { DbMember, DbCotisation, DbPayment } from '../lib/supabase'
-
+// import { DatabaseService } from '../lib/database'
+// import { DbMember, DbCotisation, DbPayment } from '../lib/database'
+import { DatabaseService, authService, DbMember, DbPayment, DbCotisation } from '../lib/supabaseService'
 interface PaymentsProps {
     onBack: () => void
 }
@@ -1172,10 +1172,10 @@ const Payments: React.FC<PaymentsProps> = ({ onBack }) => {
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap">
                                                     <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${payment.status === 'paid'
-                                                            ? 'bg-green-100 text-green-800'
-                                                            : payment.status === 'partial'
-                                                                ? 'bg-orange-100 text-orange-800'
-                                                                : 'bg-red-100 text-red-800'
+                                                        ? 'bg-green-100 text-green-800'
+                                                        : payment.status === 'partial'
+                                                            ? 'bg-orange-100 text-orange-800'
+                                                            : 'bg-red-100 text-red-800'
                                                         }`}>
                                                         {payment.status === 'paid' && <CheckCircle className="h-3 w-3 mr-1" />}
                                                         {payment.status === 'partial' && <AlertCircle className="h-3 w-3 mr-1" />}
@@ -1371,10 +1371,10 @@ const Payments: React.FC<PaymentsProps> = ({ onBack }) => {
                                                 }))}
                                                 disabled={suggestion.disabled}
                                                 className={`p-3 border-2 rounded-lg transition-all duration-300 hover:scale-105 ${suggestion.disabled
-                                                        ? 'border-gray-300 bg-gray-100 cursor-not-allowed opacity-50'
-                                                        : newPayment.amount === suggestion.value.toString()
-                                                            ? 'border-green-500 bg-green-50'
-                                                            : 'border-gray-200 hover:border-green-300'
+                                                    ? 'border-gray-300 bg-gray-100 cursor-not-allowed opacity-50'
+                                                    : newPayment.amount === suggestion.value.toString()
+                                                        ? 'border-green-500 bg-green-50'
+                                                        : 'border-gray-200 hover:border-green-300'
                                                     }`}
                                             >
                                                 <div className="text-center">
