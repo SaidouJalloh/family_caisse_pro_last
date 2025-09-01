@@ -1055,8 +1055,8 @@
 // code sans profil
 import { createClient, SupabaseClient, User as SupabaseUser } from '@supabase/supabase-js'
 
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdrdmhjbmRvaHNsb21ld2dmaGhvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY1NzI0MTAsImV4cCI6MjA3MjE0ODQxMH0.lQycKgQ7TAHqUG5pSpbOAhdrgQhKbmo0Lz35Fo1IPfo'
-const supabaseUrl = 'https://gkvhcndohslomewgfhho.supabase.co'
+const supabaseUrl = process.env.REACT_APP_SUPABASE_URL || 'https://gkvhcndohslomewgfhho.supabase.co'
+const supabaseAnonKey = process.env.REACT_APP_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdrdmhjbmRvaHNsb21ld2dmaGhvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY1NzI0MTAsImV4cCI6MjA3MjE0ODQxMH0.lQycKgQ7TAHqUG5pSpbOAhdrgQhKbmo0Lz35Fo1IPfo'
 export const supabase: SupabaseClient = createClient(supabaseUrl, supabaseAnonKey)
 
 // ===================================
