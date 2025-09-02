@@ -2037,8 +2037,43 @@ export class DatabaseService {
         return databaseManager.updateActivity(id, updates)
     }
 
-    static async deleteActivity(id: string) {
-        return databaseManager.deleteActivity(id)
+    // SUPPRESSION DEFINITIVE - Solution qui marche
+    static async deleteActivity(id: string): Promise<boolean> {
+        try {
+            const { data: { user } } = await supabase.auth.getUser()
+            if (!user) return false
+
+            const { error } = await supabase
+                .from('activities')
+                .delete()
+                .eq('id', id)
+
+            return !error
+        } catch (error) {
+            console.error('Erreur deleteActivity:', error)
+            return false
+        }
+    }
+
+    // VIDER TOUTES LES ACTIVITES - Solution qui marche
+    static async clearAllActivities(): Promise<boolean> {
+        try {
+            const { data: { user } } = await supabase.auth.getUser()
+            if (!user) return false
+
+            const profile = await authService.getProfile(user.id)
+            if (!profile?.family_id) return false
+
+            const { error } = await supabase
+                .from('activities')
+                .delete()
+                .eq('family_id', profile.family_id)
+
+            return !error
+        } catch (error) {
+            console.error('Erreur clearAllActivities:', error)
+            return false
+        }
     }
 
     static async getCaisseDeposits() {
